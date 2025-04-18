@@ -10,3 +10,75 @@ Pull updates	git pull origin main
 Create new branch	git checkout -b new-branch-name
 Switch branch	git checkout branch-name
 Merge branches	git merge branch-name
+
+✅ 1. Create a New Repository on GitHub
+Go to GitHub.com
+
+Click the "+" button in the top right > "New repository"
+
+Fill in:
+
+Repository name (e.g., my-first-repo)
+
+Description (optional)
+
+Choose Public or Private
+
+DO NOT check "Initialize with a README" (important if you're starting from local)
+
+Click "Create repository"
+
+You’ll see a page with instructions — keep it open
+
+💻 2. Open Your Terminal / Command Prompt
+Navigate to your project folder or create a new one:
+
+
+cd path/to/your/project-folder
+Or create one:
+
+mkdir my-first-repo
+cd my-first-repo
+⚙️ 3. Initialize a Local Git Repository
+
+git init
+This sets up Git in your folder (creates a hidden .git folder).
+
+📁 4. Add Your Project Files
+If you don’t have files yet, you can create one:
+
+echo "# My First Project" > README.md
+Then check the status:
+
+
+git status
+📦 5. Stage and Commit Your Files
+Add all files to staging:
+
+git add .
+Commit the files:
+
+git commit -m "Initial commit"
+🔗 6. Link Your Local Repo to GitHub
+Copy the GitHub repo URL (from the repo page, like https://github.com/username/my-first-repo.git) and run:
+
+
+git remote add origin https://github.com/your-username/your-repo-name.git
+🚀 7. Push Your Local Repo to GitHub
+bash
+
+git push -u origin main
+If you get an error, try using master instead of main (depends on your Git settings):
+
+bash
+Copy
+Edit
+git push -u origin master
+✅ Done!
+Now, refresh your GitHub repo page — you’ll see your files uploaded!
+
+💡 Bonus Tips
+If Git asks for your GitHub login, you can either use your GitHub username and a personal access token (PAT) instead of your password (GitHub no longer allows password auth).
+
+To avoid entering credentials every time, you can set up SSH authentication.
+
