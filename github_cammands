@@ -1,0 +1,12 @@
+🔁 Common GitHub Commands Cheat Sheet
+
+Task	Command
+Clone repo	git clone <repo-url>
+Check status	git status
+Stage files	git add . or git add <file>
+Commit	git commit -m "message"
+Push changes	git push origin main
+Pull updates	git pull origin main
+Create new branch	git checkout -b new-branch-name
+Switch branch	git checkout branch-name
+Merge branches	git merge branch-name
