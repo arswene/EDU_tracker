@@ -1,21 +1,27 @@
 <?php
 session_start();
-include 'db.php';
+include('connection.php');
+$username=$_POST['username'];
+$password=$_POST['password'];
 
-$username = $_POST['username'];
-$password = $_POST['password'];
-
-$sql = "SELECT * FROM users WHERE username = '$username'";
-$result = $conn->query($sql);
-
-if ($result && $result->num_rows > 0) {
-    $user = $result->fetch_assoc();
-    if (password_verify($password, $user['password'])) {
-        $_SESSION['user'] = $user['username'];
-        header("Location: dashboard.php");
-        exit();
+$stmt=$db->prepare("SELECT * FROM users where username=:username");
+$stmt->execute(['username'=>$username]);
+$rowCount = $stmt->rowCount();
+if($rowCount>0){
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach($users as $row){
+        $storedPassword=$row['password'];
+        $role=$row['role'];
     }
+    if($role=='Admin' && password_verify($password,$storedPwd)){
+        $_SESSION['username']=$username;
+        header("location:login.php");
+    }
+    if($role=='Editor' && password_verify($password,$storedPassword)){
+        $_SESSION['username']=$username;
+        header("location:dashboard.php");
+    }
+    else{echo"Access Denied You wrote wrong password";}
 }
-
-$_SESSION['error'] = "Invalid username or password.";
-header("Location: login.php");
+else{echo"Access Denied User not found";}
+?>

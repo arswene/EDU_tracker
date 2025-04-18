@@ -1,13 +1,7 @@
 <?php
-$servername="localhost";
-$user="root";
-$password='';
-$database="edu_tracker";
-
-$conn=mysqli_connect($servername,$user,$password,$database) or die('connection failed '.mysqli_connect_error());
-echo"CONNECTION ESTABLISHED";
-
-
-
+$dbs="mysql:host=localhost;dbname=edu_tracker";
+$user='root';
+$pwd='';
+$db=new PDO($dbs,$user,$pwd,[PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION]);
 
 ?>
