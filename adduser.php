@@ -1,14 +1,11 @@
 <?php
-if(isset($_POST['SAVE']));
-include('pdoconnection.php');
-// include('coonection2.php');
-$username=$_POST['username'];
-$password=$_POST['password'];
-$role=$_POST['role'];
-$pass_encrypted=password_hash($password,PASSWORD_DEFAULT);
-// mysqli_query($conn, "insert into registration(username,password) VALUES('$username','$password')") or die('Faled to save' .mysqli_error($conn));
-$stmt=$db->prepare('insert into registration(username,password,role) values(:username,:password,:role)');
-//$stmt->bindParam('ss',$username,$password);
-$stmt->execute(['username'=>$username,'password'=>$pass_encrypted,'role'=>$role]);
-header("location:index2.php");
+if(isset($_POST['save']))
+include 'connection.php';
+
+$Username =$_POST['username'];
+$Password =$_POST['password']; password_hash('password', PASSWORD_DEFAULT);
+
+mysqli_query($conn, "INSERT INTO users (Username, Password) VALUES ('$username', '$password')")or die('failed to insert the staff  '.mysqli_error($conn));
+echo "User added!";
+mysqli_close($conn);
 ?>
